@@ -1,0 +1,27 @@
+
+syntax = "proto3";
+
+option java_package = "ex.grpc";
+option objc_class_prefix = "HSW";
+
+package hellostreamingworld;
+
+// The greeting service definition.
+service Restaurant {
+  // Sends multiple greetings
+  rpc respondRequest (FoodRequest) returns (stream FoodReply) {}
+
+  rpc respondMultipleRequests (stream FoodRequest) returns (stream FoodReply) {}
+}
+
+// The request message containing the meal and nº of times it is requested
+message FoodRequest {
+  string name = 1;
+  int32 num_times = 2;
+}
+
+// A response message containing the message
+message FoodReply {
+  string message = 1;
+}
+
